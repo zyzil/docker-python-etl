@@ -1,8 +1,10 @@
 FROM zyzil/python-etl-base
 
+LABEL maintainer="Kevin Mullins <kmullins@gmail.com>"
+
 USER etluser
 
 COPY ./requirements.txt /tmp/requirements.txt
 WORKDIR /tmp
-RUN pip install --user wheel \
-    && pip install --user -r requirements.txt
+RUN pip install --no-cache-dir --user wheel \
+    && pip install --no-cache-dir --user -r requirements.txt

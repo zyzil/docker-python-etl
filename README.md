@@ -10,6 +10,7 @@ Base image which contains a Python 3.8 environment with popular packages such as
 
 - Data
   - pandas
+  - pyarrow
   - psycopg2
   - pyodbc and Microsoft SQL ODBC driver
   - sqlalchemy
@@ -42,4 +43,6 @@ Contains everything in the base image along with additional packages for Azure s
 
 Contains everything in the azure image along with additional packages for interactive exploration:
 
-- TODO
+- OpenJDK 11
+- Jupyter Lab
+- pyspark

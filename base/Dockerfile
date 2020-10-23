@@ -1,6 +1,8 @@
 # Build stage - this will be used to compile packages and dependencies for python env
 FROM python:3.8.6-slim-buster AS build
 
+LABEL maintainer="Kevin Mullins <kmullins@gmail.com>"
+
 COPY ./microsoft.asc /tmp/microsoft.asc
 WORKDIR /tmp
 
@@ -16,8 +18,8 @@ RUN apt-get update \
 
 COPY ./requirements.txt /tmp/requirements.txt
 WORKDIR /tmp
-RUN pip install --user wheel \
-    && pip install --user -r requirements.txt
+RUN pip install --no-cache-dir --user wheel \
+    && pip install --no-cache-dir --user -r requirements.txt
 
 # base image - this will serve ass the base python environment with packages installed
 FROM python:3.8.6-slim-buster AS base
