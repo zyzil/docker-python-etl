@@ -1,0 +1,12 @@
+# this is basically a requirements.txt with just the unpinned azure dependencies added to the env
+# might move to an environment manager to assist with package locks and such
+pandas
+psycopg2
+scrapy
+beautifulsoup4
+sqlalchemy
+alembic
+pyodbc
+fastapi
+uvicorn
+python-multipart

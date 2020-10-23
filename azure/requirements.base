@@ -1,0 +1,14 @@
+# this is basically a requirements.txt with just the unpinned azure dependencies added to the env
+# might move to an environment manager to assist with package locks and such
+azure-appconfiguration
+azure-core
+azure-cosmos
+azure-eventgrid
+azure-eventhub
+azure-functions
+azure-identity
+azure-keyvault-secrets
+azure-servicebus
+azure-storage-file-datalake
+azure-storage-file-share
+azure-storage-queue
