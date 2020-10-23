@@ -7,19 +7,19 @@ COPY ./microsoft.asc /tmp/microsoft.asc
 WORKDIR /tmp
 
 RUN apt-get update \ 
-    && DEBIAN_FRONTEND=noninteractive apt-get -yq install gnupg curl \
+    && DEBIAN_FRONTEND=noninteractive apt-get -yq install gnupg \
     && apt-key add /tmp/microsoft.asc \
     && echo "deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main" > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \ 
     && apt-get -yq upgrade \
-    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq install build-essential libpq-dev msodbcsql17 mssql-tools unixodbc-dev libgssapi-krb5-2 \
+    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq install build-essential libpq-dev msodbcsql17 unixodbc-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /tmp/requirements.txt
 WORKDIR /tmp
-RUN pip install --no-cache-dir --user wheel \
-    && pip install --no-cache-dir --user -r requirements.txt
+RUN pip install --compile --no-cache-dir --user wheel \
+    && pip install --compile --no-cache-dir --user -r requirements.txt
 
 # base image - this will serve ass the base python environment with packages installed
 FROM python:3.8.6-slim-buster AS base
@@ -28,12 +28,12 @@ COPY ./microsoft.asc /tmp/microsoft.asc
 WORKDIR /tmp
 
 RUN apt-get update \ 
-    && DEBIAN_FRONTEND=noninteractive apt-get -yq install gnupg curl \
+    && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install gnupg \
     && apt-key add /tmp/microsoft.asc \
     && echo "deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main" > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \ 
     && apt-get -yq upgrade \
-    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq install msodbcsql17 mssql-tools libpq5 \
+    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install msodbcsql17 libpq5 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

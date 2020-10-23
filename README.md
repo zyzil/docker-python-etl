@@ -13,25 +13,18 @@ Base image which contains a Python 3.8 environment with popular packages such as
   - pyarrow
   - psycopg2
   - pyodbc and Microsoft SQL ODBC driver
-  - sqlalchemy
-  - alembic
 - Scraping
   - scrapy
-  - beautiful soup
-- Hosting
-  - fastapi
-  - uvicorn
+  - requests
 
 ## docker-python-etl-azure
 
 Contains everything in the base image along with additional packages for Azure such as:
 
-- azure-appconfiguration
 - azure-core
 - azure-cosmos
 - azure-eventgrid
 - azure-eventhub
-- azure-functions
 - azure-identity
 - azure-keyvault-secrets
 - azure-servicebus
@@ -46,3 +39,4 @@ Contains everything in the azure image along with additional packages for intera
 - OpenJDK 11
 - Jupyter Lab
 - pyspark
+  - TODO: maybe split out

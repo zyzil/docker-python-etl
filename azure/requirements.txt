@@ -1,11 +1,9 @@
 adal==1.2.5
-azure-appconfiguration==1.1.1
 azure-common==1.1.25
 azure-core==1.8.2
 azure-cosmos==4.2.0
 azure-eventgrid==1.3.0
 azure-eventhub==5.2.0
-azure-functions==1.4.0
 azure-identity==1.4.1
 azure-keyvault-secrets==4.2.0
 azure-servicebus==0.50.3
