@@ -33,7 +33,7 @@ RUN apt-get update \
     && echo "deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main" > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \ 
     && apt-get -yq upgrade \
-    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq install msodbcsql17 mssql-tools \
+    && ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get -yq install msodbcsql17 mssql-tools libpq5 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
